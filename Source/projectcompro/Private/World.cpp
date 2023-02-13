@@ -1,4 +1,4 @@
-﻿#include "NativizedAssets.h"
+#include "NativizedAssets.h"
 #include "World.h"
 #include "GeneratedCodeHelpers.h"
 #include "Runtime/Engine/Classes/Engine/SimpleConstructionScript.h"
@@ -471,10 +471,7 @@
 #include "Runtime/Engine/Classes/AI/Navigation/NavRelevantInterface.h"
 #include "Runtime/Engine/Public/HitProxies.h"
 #include "Runtime/Engine/Classes/Engine/TextureStreamingTypes.h"
-#include "Runtime/Engine/Classes/Components/BoxComponent.h"
-#include "Runtime/NavigationSystem/Public/NavAreas/NavArea_Obstacle.h"
-#include "Character.h"
-#include "CharacterController.h"
+#include "Character__pf2132744816.h"
 
 
 #ifdef _MSC_VER
@@ -483,8 +480,7 @@
 #endif
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 PRAGMA_DISABLE_OPTIMIZATION
-
-AWorld_C_::AWorld_C_(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
+AWorld::AWorld(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
 	
 	WorldCyliderMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("WorldCyliderMesh"));
@@ -713,6 +709,7 @@ void AWorld_C_::PostLoadSubobjects(FObjectInstancingGraph* OuterInstanceGraph)
 	}
 }
 
+
 PRAGMA_DISABLE_OPTIMIZATION
 void AWorld_C_::__CustomDynamicClassInitialization(UDynamicClass* InDynamicClass)
 {
@@ -777,6 +774,7 @@ void AWorld_C_::__StaticDependencies_DirectlyUsedAssets(TArray<FBlueprintDepende
 		AssetsToLoad.Add(FBlueprintDependencyData(F__NativeDependencies::Get(CompactData.ObjectRefIndex), CompactData));
 	}
 }
+
 
 PRAGMA_ENABLE_OPTIMIZATION
 PRAGMA_DISABLE_OPTIMIZATION

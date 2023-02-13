@@ -490,7 +490,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 PRAGMA_DISABLE_OPTIMIZATION
 
-ACharacter_C::ACharacter_C(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
+ACharacter::ACharacter(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
 	
 	Collider = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Collider"));
@@ -506,22 +506,22 @@ ACharacter_C::ACharacter_C(const FObjectInitializer& ObjectInitializer) : Super(
 
 	Collider->AreaClass = UNavArea_Obstacle::StaticClass();
 
-	static TWeakFieldPtr<FProperty> Field_Ptr_1{};
-	const FProperty* Local = Field_Ptr_1.Get();
+	static TWeakFieldPtr<FProperty> Field_Ptr_0{};
+	const FProperty* Local_0 = Field_Ptr_0.Get();
 
-	if (nullptr == Local_1)
+	if (nullptr == Local_0)
 	{
-		Local_1 = (UActorComponent::StaticClass())->FindPropertyByName(FName(TEXT("bCanEverAffectNavigation")));
-		check(Local_1);
-		Field_Ptr_1 = Local_1;
+		Local_0 = (UActorComponent::StaticClass())->FindPropertyByName(FName(TEXT("bCanEverAffectNavigation")));
+		check(Local_0);
+		Field_Ptr_0 = Local_0;
 	}
 
-	(((FBoolProperty*)Local)->SetPropertyValue_InContainer((Collider), true, 0));
+	(((FBoolProperty*)Local_0)->SetPropertyValue_InContainer((Collider), true, 0));
 	PlayerFlipbook->CreationMethod = EComponentCreationMethod::Native;
 	PlayerFlipbook->AttachToComponent(Collider, FAttachmentTransformRules::KeepRelativeTransform );
 
 	auto& Flipbook_Src = (*(AccessPrivateProperty<UPaperFlipbook* >((PlayerFlipbook), UPaperFlipbookComponent::__PPO__SourceFlipbook() )));
-	Flipbook_Src = CastChecked<UPaperFlipbook>(CastChecked<UDynamicClass>(ACharacter_C::StaticClass())->UsedAssets[0], ECastCheckedType::NullAllowed);
+	Flipbook_Src = CastChecked<UPaperFlipbook>(CastChecked<UDynamicClass>(ACharacter::StaticClass())->UsedAssets[0], ECastCheckedType::NullAllowed);
 	PlayerFlipbook->CastShadow = true;
 	PlayerFlipbook->bCastVolumetricTranslucentShadow = true;
 	PlayerFlipbook->bCastInsetShadow = true;
@@ -530,14 +530,14 @@ ACharacter_C::ACharacter_C(const FObjectInitializer& ObjectInitializer) : Super(
 	auto& Flipbook_Lct = (*(AccessPrivateProperty<FVector >((PlayerFlipbook), USceneComponent::__PPO__RelativeLocation() )));
 	Flipbook_Lct = FVector(4.0f, 0.0f, -34.0f);
 
-	(((FBoolProperty*)Local)->SetPropertyValue_InContainer((PlayerFlipbook), false, 0));
+	(((FBoolProperty*)Local_0)->SetPropertyValue_InContainer((PlayerFlipbook), false, 0));
 
 	auto& Overlaps = (*(AccessPrivateProperty<EActorUpdateOverlapsMethod >((this), AActor::__PPO__DefaultUpdateOverlapsMethodDuringLevelStreaming() )));
 	Overlaps = EActorUpdateOverlapsMethod::OnlyUpdateMovable;
 }
 
 PRAGMA_ENABLE_OPTIMIZATION
-void ACharacter_C::PostLoadSubobjects(FObjectInstancingGraph* OuterInstanceGraph)
+void ACharacter::PostLoadSubobjects(FObjectInstancingGraph* OuterInstanceGraph)
 {
 	Super::PostLoadSubobjects(OuterInstanceGraph);
 	if(Collider)
@@ -549,8 +549,9 @@ void ACharacter_C::PostLoadSubobjects(FObjectInstancingGraph* OuterInstanceGraph
 		PlayerFlipbook->CreationMethod = EComponentCreationMethod::Native;
 	}
 }
+
 PRAGMA_DISABLE_OPTIMIZATION
-void ACharacter_C::__CustomDynamicClassInitialization(UDynamicClass* InDynamicClass)
+void ACharacter::__CustomDynamicClassInitialization(UDynamicClass* InDynamicClass)
 {
 	ensure(0 == InDynamicClass->ReferencedConvertedFields.Num());
 	ensure(0 == InDynamicClass->MiscConvertedSubobjects.Num());
@@ -559,46 +560,48 @@ void ACharacter_C::__CustomDynamicClassInitialization(UDynamicClass* InDynamicCl
 	ensure(0 == InDynamicClass->Timelines.Num());
 	ensure(0 == InDynamicClass->ComponentClassOverrides.Num());
 	ensure(nullptr == InDynamicClass->AnimClassImplementation);
-
+	
 	InDynamicClass->AssembleReferenceTokenStream();
 	FConvertedBlueprintsDependencies::FillUsedAssetsInDynamicClass(InDynamicClass, &__StaticDependencies_DirectlyUsedAssets);
-
+	
 	auto SceneRoots = NewObject<USceneComponent>(InDynamicClass, USceneComponent::StaticClass(), TEXT("DefaultSceneRoot_GEN_VARIABLE"), (EObjectFlags)0x00280029);
 	InDynamicClass->ComponentTemplates.Add(SceneRoots);
 
-	static TWeakFieldPtr<FProperty> Field_Ptr_2{};
-	const FProperty* Local_2 = Field_Ptr_2.Get();
+	static TWeakFieldPtr<FProperty> Field_Ptr_1{};
+	const FProperty* Local_1 = Field_Ptr_1.Get();
 
-	if (nullptr == Local_2)
+	if (nullptr == Local_1)
 	{
-		Local_2 = (UActorComponent::StaticClass())->FindPropertyByName(FName(TEXT("bCanEverAffectNavigation")));
-		check(Local_2);
-		Field_Ptr_2 = Local_2;
+		Local_1 = (UActorComponent::StaticClass())->FindPropertyByName(FName(TEXT("bCanEverAffectNavigation")));
+		check(Local_1);
+		Field_Ptr_1 = Local_1;
 	}
-	(((FBoolProperty*)Local_2)->SetPropertyValue_InContainer((SceneRoots), false, 0));
+	(((FBoolProperty*)Local_1)->SetPropertyValue_InContainer((SceneRoots), false, 0));
 }
 
 PRAGMA_ENABLE_OPTIMIZATION
-void ACharacter_C::ExecuteUbergraph_Character(int32 EntryPoint)
+void ACharacter::ExecuteUbergraph_Character(int32 EntryPoint)
 {
 	FTransform CallFunc_MakeTransform_ReturnValue{};
-	bool ACharacter{};
+	bool CallFunc_K2_SetActorTransform_ReturnValue{};
 	check(EntryPoint == 2);
 
 	CallFunc_MakeTransform_ReturnValue = UKismetMathLibrary::MakeTransform(FVector(0.0f,0.0f,516.7f), FRotator(0.0f,0.0f,0.0f), FVector(0.5f,0.5f,0.5f));
-	ACharacter = AActor::K2_SetActorTransform(CallFunc_MakeTransform_ReturnValue, false, b0l__CallFunc_K2_SetActorTransform_SweepHitResult__pf, false);
-	return; 
+	CallFunc_K2_SetActorTransform_ReturnValue = AActor::K2_SetActorTransform(CallFunc_MakeTransform_ReturnValue, false, CallFunc_K2_SetActorTransform_SweepHitResult, false);
+	return;
 }
-void ACharacter_C::ReceiveBeginPlay()
+
+void ACharacter::ReceiveBeginPlay()
 {
 	ExecuteUbergraph_Character(2);
 }
+
 PRAGMA_DISABLE_OPTIMIZATION
-void ACharacter_C::__StaticDependencies_DirectlyUsedAssets(TArray<FBlueprintDependencyData>& AssetsToLoad)
+void ACharacter::__StaticDependencies_DirectlyUsedAssets(TArray<FBlueprintDependencyData>& AssetsToLoad)
 {
 	const FCompactBlueprintDependencyData LocCompactBlueprintDependencyData[] =
 	{
-		{3, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)}, 
+		{23, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},
 	};
 
 	for(const FCompactBlueprintDependencyData& CompactData : LocCompactBlueprintDependencyData)
@@ -606,23 +609,24 @@ void ACharacter_C::__StaticDependencies_DirectlyUsedAssets(TArray<FBlueprintDepe
 		AssetsToLoad.Add(FBlueprintDependencyData(F__NativeDependencies::Get(CompactData.ObjectRefIndex), CompactData));
 	}
 }
+
 PRAGMA_ENABLE_OPTIMIZATION
 PRAGMA_DISABLE_OPTIMIZATION
-void ACharacter_C::__StaticDependenciesAssets(TArray<FBlueprintDependencyData>& AssetsToLoad)
+void ACharacter::__StaticDependenciesAssets(TArray<FBlueprintDependencyData>& AssetsToLoad)
 {
 	__StaticDependencies_DirectlyUsedAssets(AssetsToLoad);
 	const FCompactBlueprintDependencyData LocCompactBlueprintDependencyData[] =
 	{
-		{4, FBlueprintDependencyType(true, false, false, false), FBlueprintDependencyType(false, false, false, false)}, 
-		{5, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  
-		{6, FBlueprintDependencyType(true, false, false, false), FBlueprintDependencyType(false, false, false, false)},  
-		{0, FBlueprintDependencyType(true, false, false, false), FBlueprintDependencyType(false, false, false, false)},  
-		{7, FBlueprintDependencyType(true, false, false, false), FBlueprintDependencyType(false, false, false, false)},  
-		{8, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  
-		{9, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  
-		{10, FBlueprintDependencyType(true, false, false, false), FBlueprintDependencyType(false, false, false, false)},  
-		{11, FBlueprintDependencyType(true, false, false, false), FBlueprintDependencyType(false, false, false, false)},  
-		{12, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  
+		{24, FBlueprintDependencyType(true, false, false, false), FBlueprintDependencyType(false, false, false, false)},  //CapsuleComponent 
+		{9, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //NavArea_Obstacle 
+		{25, FBlueprintDependencyType(true, false, false, false), FBlueprintDependencyType(false, false, false, false)},  //PaperFlipbookComponent 
+		{3, FBlueprintDependencyType(true, false, false, false), FBlueprintDependencyType(false, false, false, false)},  //SceneComponent 
+		{11, FBlueprintDependencyType(true, false, false, false), FBlueprintDependencyType(false, false, false, false)},  //HitResult 
+		{15, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //KismetMathLibrary 
+		{20, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //Actor 
+		{26, FBlueprintDependencyType(true, false, false, false), FBlueprintDependencyType(false, false, false, false)},  //Pawn 
+		{22, FBlueprintDependencyType(true, false, false, false), FBlueprintDependencyType(false, false, false, false)},  //PointerToUberGraphFrame 
+		{27, FBlueprintDependencyType(false, true, false, false), FBlueprintDependencyType(false, false, false, false)},  //AIController 
 	};
 
 	for(const FCompactBlueprintDependencyData& CompactData : LocCompactBlueprintDependencyData)
@@ -630,18 +634,19 @@ void ACharacter_C::__StaticDependenciesAssets(TArray<FBlueprintDependencyData>& 
 		AssetsToLoad.Add(FBlueprintDependencyData(F__NativeDependencies::Get(CompactData.ObjectRefIndex), CompactData));
 	}
 }
+
 PRAGMA_ENABLE_OPTIMIZATION
-struct FRegisterHelper__ACharacter_C
+struct FRegisterHelper__ACharacter
 {
-	FRegisterHelper__ACharacter_C()
+	FRegisterHelper__ACharacter()
 	{
-		FConvertedBlueprintsDependencies::Get().RegisterConvertedClass(TEXT("/Game/Blueprints/Character"), &ACharacter_C::__StaticDependenciesAssets);
+		FConvertedBlueprintsDependencies::Get().RegisterConvertedClass(TEXT("/Game/Blueprints/Character"), &ACharacter::__StaticDependenciesAssets);
 	}
-	static FRegisterHelper__ACharacter_C Instance;
+	static FRegisterHelper__ACharacter Instance;
 };
 
 
-FRegisterHelper__ACharacter_C FRegisterHelper__ACharacter_C::Instance;
+FRegisterHelper__ACharacter FRegisterHelper__ACharacter::Instance;
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 #ifdef _MSC_VER
 #pragma warning (pop)
