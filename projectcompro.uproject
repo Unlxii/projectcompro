@@ -5,7 +5,7 @@
 	"Description": "",
 	"Modules": [
 		{
-			"Name": "Project_CPP",
+			"Name": "projectcompro",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}
